@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3868416732749399859
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8372664860415574991}
+  - component: {fileID: 4928345348088394100}
+  m_Layer: 0
+  m_Name: LoachColors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8372664860415574991
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3868416732749399859}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.454148, y: 0.70621145, z: -37.135746}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4928345348088394100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3868416732749399859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2750d2f5ecc5d39439a96d6a431da8b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headColors:
+  - {fileID: -178839337586723078, guid: bc20852ace48060449fe87be7c9a0b70, type: 3}
+  - {fileID: -178839337586723078, guid: 6ffef9faca3ef034cb21be0f61c10d73, type: 3}
+  - {fileID: -178839337586723078, guid: 93ca3ebe6ebe01d4f84a2d2674f49819, type: 3}
+  - {fileID: -178839337586723078, guid: 3b8e7476bfaefef43a0b2c5128104555, type: 3}
+  - {fileID: -178839337586723078, guid: d05f1fb768a8da140b93cfa42778abc6, type: 3}
+  bodyColors:
+  - {fileID: -6215841754153803044, guid: bc20852ace48060449fe87be7c9a0b70, type: 3}
+  - {fileID: -6215841754153803044, guid: 6ffef9faca3ef034cb21be0f61c10d73, type: 3}
+  - {fileID: -6215841754153803044, guid: 93ca3ebe6ebe01d4f84a2d2674f49819, type: 3}
+  - {fileID: -6215841754153803044, guid: 3b8e7476bfaefef43a0b2c5128104555, type: 3}
+  - {fileID: -6215841754153803044, guid: d05f1fb768a8da140b93cfa42778abc6, type: 3}
+  tailColors:
+  - {fileID: 3963421732274465902, guid: bc20852ace48060449fe87be7c9a0b70, type: 3}
+  - {fileID: 3963421732274465902, guid: 6ffef9faca3ef034cb21be0f61c10d73, type: 3}
+  - {fileID: 3963421732274465902, guid: 93ca3ebe6ebe01d4f84a2d2674f49819, type: 3}
+  - {fileID: 3963421732274465902, guid: 3b8e7476bfaefef43a0b2c5128104555, type: 3}
+  - {fileID: 3963421732274465902, guid: d05f1fb768a8da140b93cfa42778abc6, type: 3}
