@@ -18,4 +18,20 @@ public class ButtonImageRender : MonoBehaviour
         bodyImage.sprite = body;
         tailImage.sprite = tail;
     }
+
+    void Update()
+    {
+        if (headImage.sprite != head)
+        {
+            headImage.sprite = head;
+        }
+        if (bodyImage.sprite != body)
+        {
+            bodyImage.sprite = body;
+        }
+        if (tailImage.sprite != tail)
+        {
+            tailImage.sprite = tail;
+        }
+    }
 }

@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2530355048559882200
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2530355048559882201}
+  - component: {fileID: 2530355048559882202}
+  - component: {fileID: 2530355048559882203}
+  - component: {fileID: 2530355048559882204}
+  - component: {fileID: 2530355048559882205}
+  - component: {fileID: 2530355048559882206}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2530355048559882201
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2530355048559882200}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6238929, y: 0.3405707, z: -43.4334}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2530355048559882202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2530355048559882200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09ccaa75abb7aa94b9b39fc2870ac44c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorArrow: {fileID: 2800000, guid: 8b76bb564c96c4a4fab1f0640f5f5fd8, type: 3}
+  radCursorArrow: {fileID: 2800000, guid: 6b7b49f4fd20eac4aa300f060dabad03, type: 3}
+  moveCursorArrow: {fileID: 2800000, guid: c6bd8226b7c6d8d4185abd8810d9db21, type: 3}
+--- !u!114 &2530355048559882203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2530355048559882200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 295068d98d50e1c4aa6775543117b4bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishDragPrefab: {fileID: 8638319604544757013, guid: a1b785158657b4f42841c70cc8101436,
+    type: 3}
+  selectedFish: {fileID: 0}
+  fishHeld: 0
+  placeable: 0
+  collisionLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  cloneFish: 0
+  hotbarControl: {fileID: 2530355048559882205}
+--- !u!114 &2530355048559882204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2530355048559882200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ad502f27047603428571517756714f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radGunActive: 0
+  radGun: {fileID: 0}
+  cursorController: {fileID: 2530355048559882202}
+  hotBarControl: {fileID: 2530355048559882205}
+  hotbar: {fileID: 0}
+  numButtons: 5
+  fishPickup: {fileID: 0}
+--- !u!114 &2530355048559882205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2530355048559882200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9da1e5d40633bd24eb6b454cbe7cc9c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishPlacement: {fileID: 2530355048559882203}
+  fish:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  fishAssign: 0
+--- !u!114 &2530355048559882206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2530355048559882200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53556cc221b41be46bce2e2aaf8ed1a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ionPoints: 0
+  ionPointsText: {fileID: 0}

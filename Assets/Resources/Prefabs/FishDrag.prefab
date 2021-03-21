@@ -260,6 +260,7 @@ GameObject:
   - component: {fileID: 4556152276749270962}
   - component: {fileID: 2547951212551813710}
   - component: {fileID: 6041268237901822937}
+  - component: {fileID: 4524860791215730173}
   m_Layer: 0
   m_Name: FishDrag
   m_TagString: Untagged
@@ -385,3 +386,14 @@ MonoBehaviour:
   headObject: {fileID: 0}
   bodyObject: {fileID: 0}
   tailObject: {fileID: 0}
+--- !u!210 &4524860791215730173
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8638319604544757013}
+  m_Enabled: 1
+  m_SortingLayerID: -236344453
+  m_SortingLayer: 3
+  m_SortingOrder: 0

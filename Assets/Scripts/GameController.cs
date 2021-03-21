@@ -12,12 +12,16 @@ public class GameController : MonoBehaviour
     public GameObject hotbar;
     public int numButtons;
     public FishPickup fishPickup;
+    public IonPoints ionPoints;
+
+    private int prevIonPoints;
 
     void Start()
     {
         radGunActive = false;
         hotBarControl.addedFish += UpdateHotbar;
         hotBarControl.InitHotbar();
+        InitHotbarHitbox();
     }
     void Update()
     {
@@ -36,6 +40,21 @@ public class GameController : MonoBehaviour
             radGunActive = false;
             cursorController.ResetCursor();
         }
+
+        if (prevIonPoints != ionPoints.ionPoints)
+        {
+            UpdateHotbar();
+        }
+    }
+
+    private void InitHotbarHitbox()
+    {
+        for(int i=0; i<numButtons; i++)
+        {
+            Button button = hotbar.transform.GetChild(i).GetComponent<Button>();
+            RectTransform buttonTransform = (RectTransform)button.transform;
+            button.GetComponent<BoxCollider2D>().size = new Vector2(buttonTransform.rect.width, buttonTransform.rect.height);
+        }
     }
 
     private void UpdateHotbar()
@@ -45,16 +64,31 @@ public class GameController : MonoBehaviour
             int i = 0;
             foreach (GameObject fish in hotBarControl.fish)
             {
+                Button button = hotbar.transform.GetChild(i).GetComponent<Button>();
                 Image ButtonImage = hotbar.transform.GetChild(i).gameObject.transform.GetChild(0).GetComponent<Image>();
+                Image LockImage = hotbar.transform.GetChild(i).gameObject.transform.GetChild(1).GetComponent<Image>();
+                prevIonPoints = ionPoints.ionPoints;
                 if (fish != null)
                 {
                     SetChildrenInactive(ButtonImage.gameObject, true);
-                    ButtonImage.transform.GetChild(0).GetComponent<Image>().sprite = fish.GetComponent<FishGenerator>().head;
-                    ButtonImage.transform.GetChild(1).GetComponent<Image>().sprite = fish.GetComponent<FishGenerator>().body;
-                    ButtonImage.transform.GetChild(2).GetComponent<Image>().sprite = fish.GetComponent<FishGenerator>().tail;
+                    ButtonImageRender buttonRender = ButtonImage.gameObject.GetComponent<ButtonImageRender>();
+                    buttonRender.head = fish.GetComponent<FishGenerator>().head;
+                    buttonRender.body = fish.GetComponent<FishGenerator>().body;
+                    buttonRender.tail = fish.GetComponent<FishGenerator>().tail;
+
+                    if (!ionPoints.checkIonPoints(fish.GetComponent<FishIonPoints>().cost))
+                    {
+                        LockImage.gameObject.SetActive(true);
+                    } else
+                    {
+                        LockImage.gameObject.SetActive(false);
+                    }
+
+                    button.GetComponent<ButtonStatDisplay>().fish = fish;
                 } else
                 {
                     SetChildrenInactive(ButtonImage.gameObject, false);
+                    LockImage.gameObject.SetActive(false);
                 }
                 i++;
             }

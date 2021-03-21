@@ -11,6 +11,9 @@ public class RadiationGun : MonoBehaviour
     private bool isBeaming;
     public float beamTime;
     public LayerMask collisionLayer;
+    public int radGunCostPerSecond;
+    public IonPoints ionPoints;
+    private bool enoughPoints;
 
     public List<GameObject> beamedFishList = new List<GameObject>();
 
@@ -24,8 +27,9 @@ public class RadiationGun : MonoBehaviour
         SetMousePos();
         transform.position = mousePos;
         anim.SetBool("isBeaming", isBeaming);
+        NotEnoughPoints();
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && enoughPoints)
         {
             isBeaming = true;
         } else
@@ -80,11 +84,36 @@ public class RadiationGun : MonoBehaviour
             other.GetComponent<FishEditor>().beenBeamed = false;
         }
     }
+
+    private void NotEnoughPoints()
+    {
+        if (!ionPoints.checkIonPoints(radGunCostPerSecond))
+        {
+            enoughPoints = false;
+        } else
+        {
+            enoughPoints = true;
+        }
+
+        anim.SetBool("Empty", !enoughPoints);
+    }
     private IEnumerator beamTheFish(GameObject beamedFish)
     {
-        yield return new WaitForSeconds(beamTime);
-        Debug.Log("color change");
+        yield return new WaitForSeconds(beamTime / 2);
+        if (!ionPoints.checkIonPoints(radGunCostPerSecond))
+        {
+            yield break;
+        }
+        ionPoints.SubtractIonPoints(radGunCostPerSecond);
+        yield return new WaitForSeconds(beamTime / 2);
+        if (!ionPoints.checkIonPoints(radGunCostPerSecond))
+        {
+            yield break;
+        }
+        ionPoints.SubtractIonPoints(radGunCostPerSecond);
         beamedFish.GetComponent<FishEditor>().RandomColorChangeFullBody();
+        beamedFish.GetComponent<FishEditor>().speedChange();
+        beamedFish.GetComponent<FishIonPoints>().AddRadLevel();
         beamedFish.GetComponent<FishEditor>().beenBeamed = false;
     }
 }

@@ -27,6 +27,8 @@ public class FishPlacement : MonoBehaviour
     public event Action Placed;
 
     public HotbarControl hotbarControl;
+    public IonPoints ionPoints;
+    public StatDisplay statDisplay;
 
     void Start()
     {
@@ -41,25 +43,31 @@ public class FishPlacement : MonoBehaviour
 
         if (fishHeld)
         {
-           DisplayFish();
+            DisplayFish();
+            statDisplay.ShowDisplay(selectedFish);
             if (Input.GetMouseButtonDown(0))
             {
                 if (tempFish.placeable)
                 {
                     GameObject placedFish = Instantiate(selectedFish, mousePos, Quaternion.identity);
                     placedFish.SetActive(true);
+                    placedFish.GetComponent<FishController>().enabled = true;
                     SetTargetVisible(placedFish);
                     placedFish.name = "FrankenFish";
                     ResetDragFish();
                     Placed();
+
+                    if (!cloneFish)
+                    {
+                        ionPoints.SubtractIonPoints(placedFish.GetComponent<FishIonPoints>().cost);
+                    }
                 }
             }
             if (Input.GetMouseButtonDown(1))
             {
                 ResetDragFish();
                 notPlaced();
-            }
-            
+            }           
         }
     }
 
@@ -70,6 +78,7 @@ public class FishPlacement : MonoBehaviour
         prefabCreated = false;
         placeable = true;
         selectedFish = null;
+        statDisplay.HideDisplay();
     }
 
     private void SetMousePos()
@@ -112,12 +121,22 @@ public class FishPlacement : MonoBehaviour
 
     private void HotbarFishSelect(int index)
     {
-        if (hotbarControl.getFish(index) != null && !hotbarControl.fishAssign)
+        if (ionPoints.checkIonPoints(hotbarControl.getFish(index).GetComponent<FishIonPoints>().cost))
         {
-            fishHeld = true;
-            selectedFish = hotbarControl.getFish(index);
-            cloneFish = false;
-        }
+            if (hotbarControl.getFish(index) != null && !hotbarControl.fishAssign)
+            {
+                fishHeld = true;
+                selectedFish = hotbarControl.getFish(index);
+                cloneFish = false;
+            }
+        } 
+    }
+
+    public void ShopFishSelect(GameObject fish)
+    {
+        fishHeld = true;
+        selectedFish = fish;
+        cloneFish = false;
     }
 
     public void Fish1Select()
