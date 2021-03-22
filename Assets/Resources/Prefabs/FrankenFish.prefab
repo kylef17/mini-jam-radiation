@@ -342,6 +342,8 @@ MonoBehaviour:
     type: 3}
   TangColors: {fileID: 2585280633020912526, guid: b5db184b0ede2d04295c52bff540390f,
     type: 3}
+  GulpColors: {fileID: 9068595349018423607, guid: 805e8cec827719e4f9d40f95b52785f5,
+    type: 3}
   fishGen: {fileID: 0}
   fishController: {fileID: 0}
   speedChangeRange: 2

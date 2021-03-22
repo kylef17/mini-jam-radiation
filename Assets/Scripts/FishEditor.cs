@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class FishEditor : MonoBehaviour
 {
-    public enum FishType { clown, dory, loach, tang }
+    public enum FishType { clown, dory, loach, tang, gulp }
 
     public FishType headType;
     public FishType bodyType;
@@ -15,6 +15,7 @@ public class FishEditor : MonoBehaviour
     public Colors ClownColors;
     public Colors LoachColors;
     public Colors TangColors;
+    public Colors GulpColors;
     public FishGenerator fishGen;
     public FishController fishController;
 
@@ -47,6 +48,9 @@ public class FishEditor : MonoBehaviour
         } else if (headType == FishType.tang)
         {
             colorToUse = TangColors;
+        } else if (headType == FishType.gulp)
+        {
+            colorToUse = GulpColors;
         }
         else
         {

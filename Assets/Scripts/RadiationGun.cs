@@ -57,6 +57,11 @@ public class RadiationGun : MonoBehaviour
                 }
             }
         }
+
+        if (isBeaming)
+        {
+            SoundManager.PlaySound(SoundManager.Sound.beam);
+        }
     }
     private void SetMousePos()
     {
@@ -87,7 +92,7 @@ public class RadiationGun : MonoBehaviour
 
     private void NotEnoughPoints()
     {
-        if (!ionPoints.checkIonPoints(radGunCostPerSecond))
+        if (!ionPoints.checkIonPoints(radGunCostPerSecond * (int)beamTime))
         {
             enoughPoints = false;
         } else
@@ -98,22 +103,13 @@ public class RadiationGun : MonoBehaviour
         anim.SetBool("Empty", !enoughPoints);
     }
     private IEnumerator beamTheFish(GameObject beamedFish)
-    {
-        yield return new WaitForSeconds(beamTime / 2);
-        if (!ionPoints.checkIonPoints(radGunCostPerSecond))
-        {
-            yield break;
-        }
-        ionPoints.SubtractIonPoints(radGunCostPerSecond);
-        yield return new WaitForSeconds(beamTime / 2);
-        if (!ionPoints.checkIonPoints(radGunCostPerSecond))
-        {
-            yield break;
-        }
-        ionPoints.SubtractIonPoints(radGunCostPerSecond);
+    {  
+        yield return new WaitForSeconds(beamTime);
+        ionPoints.SubtractIonPoints(radGunCostPerSecond * (int)beamTime);
         beamedFish.GetComponent<FishEditor>().RandomColorChangeFullBody();
         beamedFish.GetComponent<FishEditor>().speedChange();
         beamedFish.GetComponent<FishIonPoints>().AddRadLevel();
         beamedFish.GetComponent<FishEditor>().beenBeamed = false;
+        SoundManager.PlaySound(SoundManager.Sound.mutate);
     }
 }

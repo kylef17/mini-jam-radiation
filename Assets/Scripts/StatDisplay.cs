@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class StatDisplay : MonoBehaviour
 {
-    public float xOffset;
+    private float xOffset;
     public float yOffset;
     public CanvasGroup cGroup;
     private Vector3 mousePos;
@@ -13,6 +13,7 @@ public class StatDisplay : MonoBehaviour
     void Start()
     {
         HideDisplay();
+        xOffset = 3f;
     }
 
     void Update()
@@ -31,9 +32,27 @@ public class StatDisplay : MonoBehaviour
         gameObject.transform.GetChild(0).GetComponent<Text>().text = "Cost: " + cost.ToString() + "\n" + "Rad. Level: " + radLevel.ToString() + "\n" + "Points/s: " + pointsPerSecond.ToString();
     }
 
+    private bool xOffsetChanged;
+    public void ShowDisplayRad()
+    {
+        cGroup.alpha = 1f;
+        if (!xOffsetChanged)
+        {
+            Debug.Log("xoffset changed");
+            xOffset = -xOffset;
+            xOffsetChanged = true;
+        }
+        gameObject.transform.GetChild(0).GetComponent<Text>().text = "Cost: 600";
+    }
+
     public void HideDisplay()
     {
         cGroup.alpha = 0f;
+        if (xOffsetChanged)
+        {
+            xOffset = -xOffset;
+            xOffsetChanged = false;
+        }
         cGroup.blocksRaycasts = false;
     }
 

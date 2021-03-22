@@ -54,6 +54,7 @@ public class FishPlacement : MonoBehaviour
                     placedFish.GetComponent<FishController>().enabled = true;
                     SetTargetVisible(placedFish);
                     placedFish.name = "FrankenFish";
+                    SoundManager.PlaySound(SoundManager.Sound.placeFish);
                     ResetDragFish();
                     Placed();
 

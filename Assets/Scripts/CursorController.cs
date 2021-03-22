@@ -7,6 +7,7 @@ public class CursorController : MonoBehaviour
     public Texture2D cursorArrow;
     public Texture2D radCursorArrow;
     public Texture2D moveCursorArrow;
+    public Texture2D trashCursorArrow;
 
     void Start()
     {
@@ -21,6 +22,11 @@ public class CursorController : MonoBehaviour
     public void Movebutton()
     {
         Cursor.SetCursor(moveCursorArrow, Vector2.zero, CursorMode.ForceSoftware);
+    }
+
+    public void TrashButton()
+    {
+        Cursor.SetCursor(trashCursorArrow, Vector2.zero, CursorMode.ForceSoftware);
     }
 
     public void ResetCursor()

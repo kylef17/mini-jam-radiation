@@ -2,34 +2,61 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public bool radGunActive;
     public RadiationGun radGun;
+    public bool trashActive;
+    public TrashPickup trashTool;
     public CursorController cursorController;
     public HotbarControl hotBarControl;
     public GameObject hotbar;
     public int numButtons;
     public FishPickup fishPickup;
     public IonPoints ionPoints;
-
+    public Store store;
+    public FishPlacement fishPlacement;
+    public Tutorial tutorial;
+    public bool _tutorialActive;
     private int prevIonPoints;
+
+    void Awake()
+    {
+        SoundManager.Initialize();
+    }
 
     void Start()
     {
         radGunActive = false;
+        trashActive = false;
+        _tutorialActive = true;
         hotBarControl.addedFish += UpdateHotbar;
         hotBarControl.InitHotbar();
         InitHotbarHitbox();
     }
     void Update()
     {
-        if (radGunActive)
+        if (tutorial != null && tutorial.tutorialActive == false)
+        {
+            tutorial.gameObject.SetActive(false);
+        }
+        if (_tutorialActive)
+        {
+            if (tutorial.gameObject.activeSelf)
+            {
+                _tutorialActive = true;
+            }
+            else
+            {
+                _tutorialActive = false;
+            }
+        }
+        if (radGunActive || trashActive || _tutorialActive)
         {
             fishPickup.noOtherTools = false;
         }
-        if (!radGunActive)
+        if (!radGunActive && !trashActive && !store.dropDownVisible && !_tutorialActive)
         {
             radGun.gameObject.SetActive(false);
             fishPickup.noOtherTools = true;
@@ -38,6 +65,8 @@ public class GameController : MonoBehaviour
         {
             radGun.gameObject.SetActive(false);
             radGunActive = false;
+            trashTool.gameObject.SetActive(false);
+            trashActive = false;
             cursorController.ResetCursor();
         }
 
@@ -104,7 +133,26 @@ public class GameController : MonoBehaviour
 
     public void RadiationGunButton()
     {
-        radGun.gameObject.SetActive(true);
-        radGunActive = true;
+        if (!fishPlacement.fishHeld && !_tutorialActive)
+        {
+            radGun.gameObject.SetActive(true);
+            radGunActive = true;
+            cursorController.RadiationButton();
+        }        
+    }
+
+    public void TrashButton()
+    {
+        if (!fishPlacement.fishHeld && !_tutorialActive)
+        {
+            trashTool.gameObject.SetActive(true);
+            trashActive = true;
+            cursorController.TrashButton();
+        }
+    }
+
+    public void ExitButton()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }

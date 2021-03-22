@@ -30,6 +30,8 @@ public class Store : MonoBehaviour
 
     public IonPoints ionPoints;
     public FishPlacement fishPlacement;
+    public bool dropDownVisible;
+    public FishPickup fishPickup;
 
     void Start()
     {
@@ -97,11 +99,15 @@ public class Store : MonoBehaviour
     public void showDropDown()
     {
         storeDropDown.gameObject.SetActive(true);
+        fishPickup.noOtherTools = false;
+        dropDownVisible = true;
     }
 
     public void hideDropDown()
     {
         storeDropDown.gameObject.SetActive(false);
+        fishPickup.noOtherTools = true;
+        dropDownVisible = false;
     }
 
     public void dropDownButton()
