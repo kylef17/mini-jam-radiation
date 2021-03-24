@@ -22,10 +22,35 @@ PrefabInstance:
       propertyPath: tailType
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2221375068468331628, guid: edd9357608a917f42bf0b84c1b9c06ca,
+        type: 3}
+      propertyPath: cost
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 2221375068468331628, guid: edd9357608a917f42bf0b84c1b9c06ca,
+        type: 3}
+      propertyPath: pointsPerSecond
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2221375068468331628, guid: edd9357608a917f42bf0b84c1b9c06ca,
+        type: 3}
+      propertyPath: radLevelIncrease
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2221375068468331628, guid: edd9357608a917f42bf0b84c1b9c06ca,
+        type: 3}
+      propertyPath: radLevelCostIncrease
+      value: 375
+      objectReference: {fileID: 0}
+    - target: {fileID: 2221375068468331628, guid: edd9357608a917f42bf0b84c1b9c06ca,
+        type: 3}
+      propertyPath: savedPointsPerSecond
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2803202608554410578, guid: edd9357608a917f42bf0b84c1b9c06ca,
         type: 3}
       propertyPath: m_Name
-      value: FrankenFish Gulp
+      value: FrankenFish Gulp Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2803202608554410579, guid: edd9357608a917f42bf0b84c1b9c06ca,
         type: 3}

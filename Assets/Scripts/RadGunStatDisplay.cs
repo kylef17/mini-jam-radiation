@@ -11,7 +11,7 @@ public class RadGunStatDisplay : MonoBehaviour
 
     void Update()
     {
-        if (ionPoints.checkIonPoints(600))
+        if (ionPoints.checkIonPoints(400))
         {
             lockImage.gameObject.SetActive(false);
         } else

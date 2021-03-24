@@ -10,12 +10,19 @@ public class FishIonPoints : MonoBehaviour
     public int radLevelCostIncrease;
     public int cost;
     public IonPoints ionPoints;
-
+    public bool isDummy;
+    public bool dummyReset;
+    public int savedPointsPerSecond;
     private bool isRunning;
 
     void Start()
     {
         ionPoints = GameObject.Find("GameController").GetComponent<IonPoints>();
+        if (isDummy)
+        {
+            pointsPerSecond = 0;
+            dummyReset = false;
+        }
     }
     void Update()
     {
@@ -24,6 +31,12 @@ public class FishIonPoints : MonoBehaviour
             isRunning = true;
             IEnumerator co = addPoints(pointsPerSecond);
             StartCoroutine(co);
+        }
+
+        if (!isDummy && !dummyReset)
+        {
+            pointsPerSecond = savedPointsPerSecond;
+            dummyReset = true;
         }
     }
 

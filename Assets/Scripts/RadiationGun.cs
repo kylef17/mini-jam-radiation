@@ -106,7 +106,20 @@ public class RadiationGun : MonoBehaviour
     {  
         yield return new WaitForSeconds(beamTime);
         ionPoints.SubtractIonPoints(radGunCostPerSecond * (int)beamTime);
-        beamedFish.GetComponent<FishEditor>().RandomColorChangeFullBody();
+
+        if (beamedFish.GetComponent<FishEditor>().isFish2)
+        {
+            beamedFish.GetComponent<FishEditor>().isFish2 = false;
+            yield break;
+        }
+        if (beamedFishList.Count > 1 && beamedFishList[0] == beamedFish)
+        {
+            beamedFish.GetComponent<FishEditor>().ColorSwap(beamedFish, beamedFishList[1]);
+        }
+        else
+        {
+            beamedFish.GetComponent<FishEditor>().RandomColorChangeFullBody();
+        }
         beamedFish.GetComponent<FishEditor>().speedChange();
         beamedFish.GetComponent<FishIonPoints>().AddRadLevel();
         beamedFish.GetComponent<FishEditor>().beenBeamed = false;

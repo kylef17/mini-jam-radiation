@@ -100,5 +100,30 @@ PrefabInstance:
       propertyPath: tailType
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8984381151679008845, guid: 9a9c1021adada314eac064a5ac4f8bfc,
+        type: 3}
+      propertyPath: cost
+      value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984381151679008845, guid: 9a9c1021adada314eac064a5ac4f8bfc,
+        type: 3}
+      propertyPath: pointsPerSecond
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984381151679008845, guid: 9a9c1021adada314eac064a5ac4f8bfc,
+        type: 3}
+      propertyPath: radLevelIncrease
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984381151679008845, guid: 9a9c1021adada314eac064a5ac4f8bfc,
+        type: 3}
+      propertyPath: radLevelCostIncrease
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984381151679008845, guid: 9a9c1021adada314eac064a5ac4f8bfc,
+        type: 3}
+      propertyPath: savedPointsPerSecond
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a9c1021adada314eac064a5ac4f8bfc, type: 3}

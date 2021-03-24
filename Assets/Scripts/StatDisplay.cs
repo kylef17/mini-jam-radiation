@@ -27,9 +27,9 @@ public class StatDisplay : MonoBehaviour
         cGroup.alpha = 1f;
         int cost = fish.GetComponent<FishIonPoints>().cost;
         int radLevel = fish.GetComponent<FishIonPoints>().radLevel;
-        int pointsPerSecond = fish.GetComponent<FishIonPoints>().pointsPerSecond;
+        int savedPointsPerSecond = (fish.GetComponent<FishIonPoints>().savedPointsPerSecond + (fish.GetComponent<FishIonPoints>().radLevel * fish.GetComponent<FishIonPoints>().radLevelIncrease));
 
-        gameObject.transform.GetChild(0).GetComponent<Text>().text = "Cost: " + cost.ToString() + "\n" + "Rad. Level: " + radLevel.ToString() + "\n" + "Points/s: " + pointsPerSecond.ToString();
+        gameObject.transform.GetChild(0).GetComponent<Text>().text = "Cost: " + cost.ToString() + "\n" + "Rad. Level: " + radLevel.ToString() + "\n" + "Points/s: " + savedPointsPerSecond.ToString();
     }
 
     private bool xOffsetChanged;
@@ -42,7 +42,7 @@ public class StatDisplay : MonoBehaviour
             xOffset = -xOffset;
             xOffsetChanged = true;
         }
-        gameObject.transform.GetChild(0).GetComponent<Text>().text = "Cost: 600";
+        gameObject.transform.GetChild(0).GetComponent<Text>().text = "Cost: 400";
     }
 
     public void HideDisplay()

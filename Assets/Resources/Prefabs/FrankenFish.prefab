@@ -348,6 +348,7 @@ MonoBehaviour:
   fishController: {fileID: 0}
   speedChangeRange: 2
   beenBeamed: 0
+  isFish2: 0
 --- !u!114 &8984381151679008845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,10 +363,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointsPerSecond: 1
   radLevel: 0
-  radLevelIncrease: 5
-  radLevelCostIncrease: 200
+  radLevelIncrease: 1
+  radLevelCostIncrease: 50
   cost: 100
-  ionPoints: {fileID: 0}
+  ionPoints: {fileID: 2530355048559882206, guid: 275991d4fa7915543a40f4f77c051db2,
+    type: 3}
+  isDummy: 0
+  savedPointsPerSecond: 1
 --- !u!1 &4943824563480811816
 GameObject:
   m_ObjectHideFlags: 0

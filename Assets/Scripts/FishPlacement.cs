@@ -52,6 +52,7 @@ public class FishPlacement : MonoBehaviour
                     GameObject placedFish = Instantiate(selectedFish, mousePos, Quaternion.identity);
                     placedFish.SetActive(true);
                     placedFish.GetComponent<FishController>().enabled = true;
+                    placedFish.GetComponent<FishIonPoints>().isDummy = false;
                     SetTargetVisible(placedFish);
                     placedFish.name = "FrankenFish";
                     SoundManager.PlaySound(SoundManager.Sound.placeFish);
